@@ -1,0 +1,15 @@
+note over selain:
+google chrome
+end note
+
+selain->palvelin: request payload: {content: "1234", date: "2020-06-14T18:18:11.288Z"} HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+palvelin-->selain: HTML-koodi status code:201 CREATED
+
+
+note over selain:
+ei mikään actionaa ja methodia ,nappi vain kutsuu functio, jossa objekti XMLHttpRequest
+on luotu ja sen methodilla on ohjattu että sen status muuttuu 201ksi
+
+html tagille on jo ja aina yhteys, siksi ei pidä laata sivun uuden sen tagin uudentäytäkseen
+end note
+

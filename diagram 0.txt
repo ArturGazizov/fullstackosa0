@@ -1,0 +1,49 @@
+note over selain:
+google chrome
+end note
+
+note over selain:
+lomakkeella attribuutit action="/new_note" method="POST"
+kun submit input klikattu
+end note
+
+selain->palvelin: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note
+
+palvelin-->selain: Status Code: 302 location: /notes
+note over selain:
+lähetti kirjoitettu sisältö
+ja otti vastaan 302 status location "/notes" kanssa viitaten uudenohjaus siihen
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/notes
+palvelin-->selain: HTML-koodi status code:200
+
+
+note over selain:
+selain törmasi css linkki
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+
+
+note over selain:
+selain törmasi js linkki
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+
+palvelin-->selain: main.css status code:200
+palvelin-->selain: main.js status code:200
+
+note over selain:
+selain alkaa suorittaa js-koodia
+joka pyytää JSON-datan palvelimelta
+end note
+
+selain->palvelin: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+palvelin-->selain: status code:200 [{ content: "HTML is easy", date: "2019-05-23T17:30:31.098Z" }, ...]
+
+note over selain:
+selain suorittaa tapahtumankäsittelijän
+joka renderöi muistiinpanot näytölle
+end note
